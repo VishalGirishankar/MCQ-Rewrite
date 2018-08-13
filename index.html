@@ -11,9 +11,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/css/mdb.min.css" rel="stylesheet">
+    <!-- NavBar css file -->
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/McqTest.css">
 </head>
 <body>
-    <div class="mynav">
+    <!-- NavBar Start -->
+    <div class="mynav"> 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">SIS</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +26,7 @@
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                      <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -41,6 +45,85 @@
             </div>
         </nav>
     </div >
+    <!-- NavBar End -->
+    <div class="row">
+    <div class="offset-2 col-8 ">
+        <div class="jumbotron"> <!-- End Of Jumbutron -->
+            <!-- Header tag for Mcq -->
+            <p id="McqHeader"  class="McqTags" style="display: none" style="font-weight: bolder">........</p>
+            <br>
+            <p id="McqContent" class="McqTags" style="display: none">.......</p>
+            <button class="btn btn-secondary"    id="TakeTest">Take the Test</button>
+            <button class="btn btn-secondary"    id="StartTest" style="display: none" onclick="StartTest()">Start Test</button>
+            
+            <div id="AnswerTag" class="container" style=" display: none"><!-- Start Of Row Tag -->
+            <!-- Row 1 -->  
+            <div class="row" id="Row0" style="display: none">
+              <div  class="col-2  " >
+                <label id="" class="btn btn-secondary" >
+                  <input  type="radio"  name="choice"  value="A" autocomplete="off" > A
+                </label> 
+              </div>
+              <div class="col-10 " id="Opt0">
+                <!-- <pre id="Opt0"></pre> -->
+              </div>
+            </div>
+          <!-- Row 2 -->
+          <div class="row slit" id="Row1" style="display: none">
+            <div class="col-sm-2 col-xs-2">
+            
+               <label id="" class="btn btn-secondary center-block">
+                  <input  type="radio"  name="choice"  value="B" autocomplete="off" > B
+                </label>  
+              
+            </div>
+            <div class="col-sm-10 col-xs-10" id="Opt1">
+              <!-- <pre id="">....</pre> -->
+            </div>
+          </div>
+          <!-- Row 3 -->
+          <div class="row slit" id="Row2" style="display: none">
+            <div class="col-sm-2 col-xs-2">
+              <label id="" class="btn btn-secondary">
+                <input  type="radio"  name="choice"  value="C" autocomplete="off" > C
+              </label> 
+            </div>
+            <div class="col-sm-10 col-xs-10" id="Opt2">
+              <!-- <pre id="">....</pre> -->
+            </div>
+          </div>
+            <!-- Row 4 -->
+            <div class="row slit" id="Row3" style="display: none">
+              <div class="col-sm-2 col-xs-2">
+                <label id="" class="btn btn-secondary">
+                  <input  type="radio"  name="choice"  value="D" autocomplete="off" > D
+                </label> 
+              </div>
+              <div class="col-sm-10 col-xs-10" id="Opt3">
+                <!-- <pre id="">....</pre> -->
+              </div>
+            </div>
+              <!-- Row 5 -->
+              <div class="row slit" id="Row4" style="display: none">
+                <div class="col-sm-2 col-xs-2">
+                  <label id="" class="btn btn-secondary">
+                    <input  type="radio"  name="choice"  value="E" autocomplete="off" > E
+                  </label> 
+                </div>
+                <div class="col-sm-10 col-xs-10" id="Opt4">
+                  <!-- <pre id=""></pre> -->
+                </div>
+              </div>
+            </div ><!-- End Of Row Tag -->
+        </div> <!-- End Of Jumbutron -->
+        
+    </div>
+    </div>
+    
+
+
+
+
 </body>
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -50,4 +133,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/js/mdb.min.js"></script>
+    <!-- TakeTest JS File -->
+    <script type="text/javascript" src="js/TakeTest.js"></script>
 </html>

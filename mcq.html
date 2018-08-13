@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Multiple Choice Questions</title>
+  </head>
+  <body class="mybody">
+    <!-- Nav Bar Copy -->
+    <div class="mynav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">SIS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">About us</a>
+                </li>
+                <li class="nav-item active">
+                        <a class="nav-link" href="mcq.html">Take MCQ</a>
+                </li>
+                <li float:"right" class="nav-item">
+                  <a class="nav-link" href="contact.html">Contact us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Questions.html">Questions</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+    </div>
+        <!-- Nav Bar Copy -->
+       
+        
+        <div class="jumbotron">
+
+              <!-- Timer -->
+        <div class="text-right" id="TimerDiv" style="display: none ">Time left = <span id="timer"></span> 
+          <br>
+          
+        </div>
+        
+        <!-- Timer -->
+                <!-- Header tag for Mcq -->
+                <p id="McqHeader"  class="McqTags" style="display: none" style="font-weight: bolder">........</p>
+                <br>
+                <p id="McqContent" class="McqTags" style="display: none">.......</p>
+                <button class="btn btn-secondary"  data-toggle="tooltip" data-placement="top" title="Tooltip on top"  id="TakeTest" onclick="InstructionLoad()">Take the Test</button>
+                <button class="btn btn-secondary"  data-toggle="tooltip" data-placement="top" title="Tooltip on top"  id="StartTest" style="display: none" onclick="StartTest()">Start Test</button>
+                
+                <div id="AnswerTag" class="container" style=" display: none"><!-- Start Of Row Tag -->
+                <!-- Row 1 -->  
+                <div class="row no-gutters" id="Row0" style="display: none">
+                  <div  class="col-2  " >
+                    <label id="" class="btn btn-secondary" >
+                      <input  type="radio"  name="choice"  value="A" autocomplete="off" > A
+                    </label> 
+                  </div>
+                  <div class="col-10 " id="Opt0">
+                    <!-- <pre id="Opt0"></pre> -->
+                  </div>
+                </div>
+              <!-- Row 2 -->
+              <div class="row slit" id="Row1" style="display: none">
+                <div class="col-sm-2 col-xs-2">
+                
+                   <label id="" class="btn btn-secondary center-block">
+                      <input  type="radio"  name="choice"  value="B" autocomplete="off" > B
+                    </label>  
+                  
+                </div>
+                <div class="col-sm-10 col-xs-10" id="Opt1">
+                  <!-- <pre id="">....</pre> -->
+                </div>
+              </div>
+              <!-- Row 3 -->
+              <div class="row slit" id="Row2" style="display: none">
+                <div class="col-sm-2 col-xs-2">
+                  <label id="" class="btn btn-secondary">
+                    <input  type="radio"  name="choice"  value="C" autocomplete="off" > C
+                  </label> 
+                </div>
+                <div class="col-sm-10 col-xs-10" id="Opt2">
+                  <!-- <pre id="">....</pre> -->
+                </div>
+              </div>
+                <!-- Row 4 -->
+                <div class="row slit" id="Row3" style="display: none">
+                  <div class="col-sm-2 col-xs-2">
+                    <label id="" class="btn btn-secondary">
+                      <input  type="radio"  name="choice"  value="D" autocomplete="off" > D
+                    </label> 
+                  </div>
+                  <div class="col-sm-10 col-xs-10" id="Opt3">
+                    <!-- <pre id="">....</pre> -->
+                  </div>
+                </div>
+                  <!-- Row 5 -->
+                  <div class="row slit" id="Row4" style="display: none">
+                    <div class="col-sm-2 col-xs-2">
+                      <label id="" class="btn btn-secondary">
+                        <input  type="radio"  name="choice"  value="E" autocomplete="off" > E
+                      </label> 
+                    </div>
+                    <div class="col-sm-10 col-xs-10" id="Opt4">
+                      <!-- <pre id=""></pre> -->
+                    </div>
+                  </div>
+                </div ><!-- End Of Row Tag -->
+                <div id="QuestionButton" class="btn btn-group" style="display: none ;"> <!-- Next button -->
+                <button id="BackQuestion" class="btn btn-secondary "  onclick="NextQuestion('Back')">Back</button> 
+               <button id="NextQuestion" class="btn btn-secondary "  onclick="NextQuestion('Next')">Next</button>
+               
+               <label for="NotAnswerMark" class="btn btn-secondary btn-group" >
+                <input type="radio" id="NotAnswerMark" >AnsLater
+              </label>
+              </div>
+               <button id="ShowResult" class="btn btn-secondary" onclick="ShowResult()" style="display: none" >Show Result</button>
+               <a id="CheckAnswer" class="btn btn-secondary" href="admin.html" style="display: none" >Check Answer</a>
+              
+              
+              </div> <!-- End of jumbotron -->
+
+              <!-- AnswerTable -->
+              <div class="MyAnswerTable" id="AnswerTable" >
+                <div class="row row-horizontal" id="AnswerTableRow1" style="visibility: hidden"> <!-- Row1 -->
+                  <div class="col" id="AnswerBox1" onclick="NextQuestion(1)">
+                    1
+                    <img src="img/Right.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="RAnsImg1" style="display: none">
+                    <img src="img/Wrong.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="WAnsImg1" style="display: none">
+                  </div>
+                  <div class="col" id="AnswerBox2" onclick="NextQuestion(2)">
+                    2
+                    <img src="img/Right.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="RAnsImg2" style="display: none">
+                    <img src="img/Wrong.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="WAnsImg2" style="display: none">
+                    </div>
+                    <div class="col" id="AnswerBox3" onclick="NextQuestion(3)">
+                      3
+                      <img src="img/Right.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="RAnsImg3" style="display: none">
+                    <img src="img/Wrong.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="WAnsImg3" style="display: none">
+                      </div>
+                      <div class="col" id="AnswerBox4" onclick="NextQuestion(4)">
+                        4
+                        <img src="img/Right.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="RAnsImg4" style="display: none">
+                    <img src="img/Wrong.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="WAnsImg4" style="display: none">
+                        </div>
+                </div>
+
+                <div class="row" id="AnswerTableRow2" style="visibility: hidden"> <!-- Row2 -->
+                  <div class="col" id="AnswerBox5" onclick="NextQuestion(5)">
+                    5
+                    <img src="img/Right.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="RAnsImg5" style="display: none">
+                    <img src="img/Wrong.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="WAnsImg5" style="display: none">
+                  </div>
+                  <div class="col" id="AnswerBox6" onclick="NextQuestion(6)">
+                    6
+                    <img src="img/Right.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="RAnsImg6" style="display: none">
+                    <img src="img/Wrong.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="WAnsImg6" style="display: none">
+                    </div>
+                    <div class="col" id="AnswerBox7" onclick="NextQuestion(7)">
+                      7
+                      <img src="img/Right.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="RAnsImg7" style="display: none">
+                    <img src="img/Wrong.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="WAnsImg7" style="display: none">
+                      </div>
+                      <div class="col" id="AnswerBox8" onclick="NextQuestion(8)">
+                        8
+                        <img src="img/Right.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="RAnsImg8" style="display: none">
+                    <img src="img/Wrong.png" width="20px" height="20px" alt="sorry your bwroser dont support" id="WAnsImg8" style="display: none">
+                        </div>
+                  </div>
+
+                  <div class="row" id="AnswerTableRow3" style="visibility:hidden"> <!-- Row3 -->
+                    <div class="col">
+                      9
+                    </div>
+                    <div class="col">
+                      10
+                      </div>
+                      <div class="col">
+                        11
+                        </div>
+                        <div class="col">
+                          12
+                          </div>
+                  </div>
+
+                  <div class="row" id="AnswerTableRow4" style="visibility: hidden"> <!-- Row4 -->
+                    <div class="col">
+                      13
+                    </div>
+                    <div class="col">
+                      14
+                      </div>
+                      <div class="col">
+                        15
+                        </div>
+                        <div class="col">
+                          16
+                          </div>
+                  </div>
+
+                  <div class="row" id="AnswerTableRow5" style="visibility:hidden"> <!-- Row5 -->
+                    <div class="col" onclick="test()">
+                      17
+                    </div>
+                    <div class="col">
+                      18
+                      </div>
+                      <div class="col">
+                        19
+                        </div>
+                        <div class="col">
+                          20
+                          </div>
+                  </div>
+
+                  <div class="row" id="AnswerTableRow6" style="visibility: hidden"> <!-- Row6 -->
+                    <div class="col">
+                      21
+                    </div>
+                    <div class="col">
+                      22
+                      </div>
+                      <div class="col">
+                        23
+                        </div>
+                        <div class="col">
+                          24
+                          </div>
+                  </div>
+
+                  <div class="row" id="AnswerTableRow7" style="visibility: hidden"> <!-- Row7 -->
+                    <div class="col">
+                      25
+                    </div>
+                    <div class="col">
+                      26
+                      </div>
+                      <div class="col">
+                        27
+                        </div>
+                        <div class="col">
+                          28
+                          </div>
+                  </div>
+
+                  <div class="row" id="AnswerTableRow8" style="visibility: hidden"> <!-- Row8 -->
+                    <div class="col">
+                      29
+                    </div>
+                    <div class="col">
+                      30
+                      </div>
+                      <div class="col">
+                        31  
+                        </div>
+                        <div class="col">
+                          32
+                          </div>
+                  </div>
+
+              </div>
+              <!-- AnswerTable -->
+
+
+        
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script type= "text/javascript" src="questions.json"></script>
+    <script src="source.js"></script>
+    <script type= "text/javascript" src="questions.json"></script>
+</body>
+</html>
