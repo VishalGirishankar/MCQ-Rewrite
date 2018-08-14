@@ -50,25 +50,32 @@
         </nav>
     </div >
     <!-- NavBar End -->
-    <div class="row">
-    <div class="offset-2 col-8 ">
+    <div class="row"> <!-- Entire Body Row-->
+    <div class="offset-2 col-8 "> <!-- Middle Col-->
+      <!-- Timer -->
+      <div class="text-right" id="TimerDiv" style="display: none ">Time left = <span id="timer"></span> 
+        <br>
+        
+      </div>
+      
+      <!-- Timer -->
         <div class="jumbotron"> <!-- End Of Jumbutron -->
             <!-- Header tag for Mcq -->
-            <p id="McqHeader"  class="McqTags" style="display: none" style="font-weight: bolder">........</p>
+            <p id="McqHeader"  class="text-center" style="display: none" style="font-weight: bolder">........</p>
             <br>
-            <p id="McqContent" class="McqTags" style="display: none"></p>
-            <button class="btn btn-secondary"    id="TakeTest">Take the Test</button>
-            <button class="btn btn-secondary"    id="StartTest" style="display: none" onclick="StartTest()">Start Test</button>
+            <p id="McqContent" class="" style="display: none"></p>
+            <button class="btn btn-secondary center"    id="TakeTest">Take the Test</button>
+            <button class="btn btn-secondary"    id="StartTest" style="display: none"  onclick="StartTest()">Start Test</button>
             
             <div id="AnswerTag" class="container" style=" display: none"><!-- Start Of Row Tag -->
             <!-- Row 1 -->  
-            <div class="row" id="Row0" style="display: none">
-              <div  class="col-2  " >
+            <div class="row slit" id="Row0" style="display: none">
+              <div  class="col-md-2  " >
                 <label id="" class="btn btn-secondary" >
-                  <input  type="radio"  name="choice"  value="A" autocomplete="off" > A
+                  <input  type="radio" id="A" name="choice"  value="A" > A
                 </label> 
               </div>
-              <div class="col-10 " id="Opt0">
+              <div class="col-md-10 " id="Opt0">
                 <!-- <pre id="Opt0"></pre> -->
               </div>
             </div>
@@ -77,7 +84,7 @@
             <div class="col-sm-2 col-xs-2">
             
                <label id="" class="btn btn-secondary center-block">
-                  <input  type="radio"  name="choice"  value="B" autocomplete="off" > B
+                  <input  type="radio"  name="choice"  value="B" id="B" > B
                 </label>  
               
             </div>
@@ -89,7 +96,7 @@
           <div class="row slit" id="Row2" style="display: none">
             <div class="col-sm-2 col-xs-2">
               <label id="" class="btn btn-secondary">
-                <input  type="radio"  name="choice"  value="C" autocomplete="off" > C
+                <input  type="radio"  name="choice"  value="C" id="C" > C
               </label> 
             </div>
             <div class="col-sm-10 col-xs-10" id="Opt2">
@@ -100,7 +107,7 @@
             <div class="row slit" id="Row3" style="display: none">
               <div class="col-sm-2 col-xs-2">
                 <label id="" class="btn btn-secondary">
-                  <input  type="radio"  name="choice"  value="D" autocomplete="off" > D
+                  <input  type="radio"  name="choice"  value="D" id="D" > D
                 </label> 
               </div>
               <div class="col-sm-10 col-xs-10" id="Opt3">
@@ -111,7 +118,7 @@
               <div class="row slit" id="Row4" style="display: none">
                 <div class="col-sm-2 col-xs-2">
                   <label id="" class="btn btn-secondary">
-                    <input  type="radio"  name="choice"  value="E" autocomplete="off" > E
+                    <input  type="radio"  name="choice"  value="E" id="E" > E
                   </label> 
                 </div>
                 <div class="col-sm-10 col-xs-10" id="Opt4">
@@ -119,10 +126,24 @@
                 </div>
               </div>
             </div ><!-- End Of Row Tag -->
+
+            <!-- Question Button -->
+            <div id="QuestionButton" class="btn-group QButton" style="display: none ;"> <!-- Next button -->
+              <button id="BackQuestion" class="btn btn-secondary "  onclick="NextQuestion('Back')">Back</button> 
+             <button id="NextQuestion" class="btn btn-secondary "  onclick="NextQuestion('Next')">Next</button>
+             
+             <label for="NotAnswerMark" class="btn btn-secondary btn-group" >
+              <input type="radio" id="NotAnswerMark" >AnsLater
+            </label>
+            </div>
+            <!-- Question Button  -->
+            
         </div> <!-- End Of Jumbutron -->
+        <div class="ROW">mmmmmmm</div>
         
-    </div>
-    </div>
+        
+    </div> <!-- Middle Col-->
+    </div> <!-- Entire Body Row-->
     
 
 

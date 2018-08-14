@@ -1,6 +1,12 @@
 .jumbotron
 {
     position: inherit;
-    top: 50%;
-    
+    top: 40px;
+    min-height: 400px
+}
+
+#TimerDiv
+{
+    padding: 20px;
+   
 }

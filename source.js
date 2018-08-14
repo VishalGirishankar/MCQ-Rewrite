@@ -174,7 +174,7 @@ var NextQuestion = function(who) // Next, Back button onclick event
         }
 
 }
-let RadioValue="";
+
 var GetAnswer= function(who)
 {
     
@@ -184,7 +184,7 @@ var GetAnswer= function(who)
     {
         if(User.Score[QNo]==undefined || User.Score[QNo]=="NotAnswer")
         {
-        RadioValue = document.querySelector('input[name="choice"]:checked').value;
+        let RadioValue = document.querySelector('input[name="choice"]:checked').value;
         document.querySelector('input[name="choice"]:checked').checked=false;
     
         User.Score[QNo]=RadioValue;
@@ -201,17 +201,7 @@ var GetAnswer= function(who)
     }
 
     document.getElementById("NotAnswerMark").checked=false;
-        // if (RadioValue==Questions[QNo].Ans)
-        // {
-        //     User.Score[Total]++;
-        //     User.Score[QNo]=1;
-            
-
-        // }
-        // else
-        // {
-        //     User.Score[QNo]=0;
-        // }
+        
         if (who=="Next")
         {
             QNo++;
