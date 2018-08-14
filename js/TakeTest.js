@@ -43,6 +43,7 @@ function StartTest() //Start button on click event
     $('#timer').html(10 + ":" + 00);
 
     NextQuestion();
+    DisplayAnswerTable();
     StartTimer();
     
 }
@@ -136,7 +137,7 @@ var GetAnswer= function(who)
         document.querySelector('input[name="choice"]:checked').checked=false;
     
         User.Score[QNo]=RadioValue;
-        //document.getElementById("AnswerBox"+[QNo]).style.background="green";
+        document.getElementById("AnswerBox"+[QNo]).style.background="green";
         }
     }
     else
@@ -144,7 +145,7 @@ var GetAnswer= function(who)
         if(User.Score[QNo]==undefined)
         {
         User.Score[QNo]="NotAnswer";
-        //document.getElementById("AnswerBox"+[QNo]).style.background="red";
+        document.getElementById("AnswerBox"+[QNo]).style.background="red";
         }
     }
 
