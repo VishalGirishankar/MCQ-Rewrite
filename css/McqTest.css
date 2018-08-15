@@ -10,3 +10,9 @@
     padding: 20px;
    
 }
+.MyAnswerTable
+{
+    position: inherit;
+    width: inherit;
+    padding: 2px;
+}

@@ -43,18 +43,19 @@ function StartTest() //Start button on click event
     $('#timer').html(10 + ":" + 00);
 
     NextQuestion();
-    DisplayAnswerTable();
+    
     StartTimer();
+    CreateAnswerBox();
     
 }
 
-function DisplayAnswerTable () //called by StartTest()
-{
-    for(let q=1; q<=(1);q++)
-    {
-        document.getElementById("AnswerTableRow"+[q]).style.visibility="visible";
-    }
-}
+// function DisplayAnswerTable () //called by StartTest()
+// {
+//     for(let q=1; q<=(1);q++)
+//     {
+//         document.getElementById("AnswerTableRow"+[q]).style.visibility="visible";
+//     }
+// }
 
 var QNo=1; // itretion for Question number
 var Allow=false
@@ -132,13 +133,13 @@ var GetAnswer= function(who)
     if(document.querySelector('input[name="choice"]:checked'))
     {
        
-        {
+        
         let RadioValue = document.querySelector('input[name="choice"]:checked').value;
         document.querySelector('input[name="choice"]:checked').checked=false;
     
         User.Score[QNo]=RadioValue;
         document.getElementById("AnswerBox"+[QNo]).style.background="green";
-        }
+        
     }
     else
     {
@@ -247,4 +248,17 @@ function checkSecond(sec)
   if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
   if (sec < 0) {sec = "59"};
   return sec;
+}
+
+function CreateAnswerBox ()
+{
+   let Row = $("<div class='row row-horizontal' id='AnswerTableRow1' > </div>")
+   let length = Questions.length;
+   for(let q=1;q<=(length-1);q++)
+   {
+       let col = $("<div class='col' id='AnswerBox"+q+"' onclick='NextQuestion("+q+")'>"+q+"</div>")
+       $(Row).append(col);
+   }
+
+   $('#AnswerStatus').append(Row);
 }
