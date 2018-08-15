@@ -49,13 +49,6 @@ function StartTest() //Start button on click event
     
 }
 
-// function DisplayAnswerTable () //called by StartTest()
-// {
-//     for(let q=1; q<=(1);q++)
-//     {
-//         document.getElementById("AnswerTableRow"+[q]).style.visibility="visible";
-//     }
-// }
 
 var QNo=1; // itretion for Question number
 var Allow=false
@@ -79,47 +72,43 @@ var NextQuestion = function(who) // Next, Back button onclick event
 
         if(QNo==(Questions.length-1))
         {
+            // console.log("AS  "+Questions.length)
             document.getElementById("NextQuestion").innerHTML="Submit";
         }
         else
         {
             document.getElementById("NextQuestion").innerHTML="Next";
         }
-
+        $('#AnswerBox'+QNo).html(QNo);
         if (QNo<(Questions.length))
         {
 
             $('#McqContent').html(Questions[QNo].Question);
             
-            for (let q=0;q<4;q++) // to hide all the Rows 
-            {
-                console.log("Hide Row "+q)
+            for (let q=0;q<5;q++) // to hide all the Rows 
+            {   console.log("Hide Row "+q)
                 $('#Row'+q).hide();
             }
             let length = Questions[QNo].NumOption
-            console.log(length)
+            
             for ( let q=0;q<length;q++) // To the Required Rows
             {   
-                console.log("Show Row "+q)
+                
                 $("#Row"+q).show();
                 $("#Opt"+q).html(Questions[QNo].Options[q]);
                 
             }
-            console.log('Not in checked '+User.Score[QNo])
+            
             if(User.Score[QNo]!=undefined && User.Score[QNo]!="NotAnswer")
             {
-                console.log('Came in checked '+User.Score[QNo])
+                
                 $('#'+User.Score[QNo]).prop('checked',true);
             }
             Allow=true;     
         }
         else
         {
-            
-
-            console.log(User.Score);
             CheckAnswer("NextQuestion");
-            
         }
 
 }
@@ -256,7 +245,7 @@ function CreateAnswerBox ()
    let length = Questions.length;
    for(let q=1;q<=(length-1);q++)
    {
-       let col = $("<div class='col' id='AnswerBox"+q+"' onclick='NextQuestion("+q+")'>"+q+"</div>")
+       let col = $("<div class='col' id='AnswerBox"+q+"' onclick='NextQuestion("+q+")'></div>")
        $(Row).append(col);
    }
 
