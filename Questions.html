@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Question</title>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/css/mdb.min.css" rel="stylesheet">
+        <!-- NavBar css file -->
+        <link rel="stylesheet" href="css/navbar.css">
+        <link rel="stylesheet" href="css/McqTest.css">
+
+        <!-- JQ VALIDATION -->
+        <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+    
+    
+  </head>
+  <body class="mybody">
+    <!-- NavBar Start -->
+    <div class="mynav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default navbar-fixed-top">
+            
+          <a class="navbar-brand" href="#">SIS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">About us</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="mcq.html">Take MCQ</a>
+                </li>
+                <li float:"right" class="nav-item">
+                  <a class="nav-link" href="contact.html">Contact us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Questions.html">Questions</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </div >
+    <!-- NavBar End -->
+
+    <div id="QuestionForm" class=" offset-2 col-8 mybutton" >
+      <div class="jumbotron">
+        <form onsubmit="GetQuestion()" name="QForm" id="QForm" >
+        <fieldset>  
+          <legend class="text-center"><b>QUESTION</b> </legend>  
+          <hr>     
+          <div class="form-horizontal">
+                        <label for="QTopic" class="text-center" >Topic</label>
+                        <input type="text" class="form-control well" id="QTopic" name="QTopic" placeholder="Topic" required >              
+                      </div>
+                  <br>
+                      <div class="form-group">
+                    
+                      <label for="Level" >Difficulty</label>
+                    
+                      <div class="btn-sm btn-group-toggle" id="Level" data-toggle="buttons">
+                        <label class="btn btn-secondary active btn-sm">
+                        <input type="radio"  name="QDifficultyLevel" value="Easy" placeholder="ID" checked> Easy
+                        </label>
+                        <label class="btn btn-secondary btn-sm">
+                        <input type="radio"  name="QDifficultyLevel" value="Difficult" placeholder="ID" > Difficult
+                        </label>
+                        <label class="btn btn-secondary btn-sm">
+                        <input type="radio"  name="QDifficultyLevel" value="VeryDifficult" placeholder="ID" > Very Difficult
+                        </label>
+                      </div>
+                      
+                  </div>
+                      <div class="form-group">
+                            <label class="text-center">Enter The Question</label> <br>
+                            <textarea name="Enter the Question" class="form-control well" id="QText" cols="75" rows="2" placeholder="Enter the Question" required></textarea>
+                        </div>
+                      
+         </fieldset> 
+                        <!-- Table for AnswerType -->
+          <fieldset>  
+              <legend class="text-center"><b>OPTIONS</b> </legend> 
+              <hr>
+                        <div>  
+                      <div class="row">  <!-- Row 1 Answertype -->
+                        <div class="col-sm-1"><label class="text-center ">Type</label> </div>
+                        <div class="btn-sm col-sm-3" data-toggle="buttons" >
+                                <label class="btn btn-secondary btn-sm">
+                                <input type="radio"  name="AnswerType" value="MCQ" checked> MCQ
+                                </label>
+                                <label class="btn btn-secondary btn-sm">
+                                <input type="radio"  name="AnswerType" value="MCA"> MCA
+                                </label>
+                        </div>
+                        <div class="col-sm-2" >
+                          
+                              <label class="text-center"  >Num of Opt</label>
+  
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="NumOption" min="2" max="5" placeholder="2-5" required>
+                        </div>
+                        <div  class="col-sm-2">
+                          
+                            <label class="text-center" >NumCorrect</label>
+
+                        </div>
+                      <div class="col-sm-2">
+                          <input type="number" class="form-control" id="NumCorrect" min="1" max="5" placeholder="2-5" value=1 required>
+                      </div>
+                      </div>
+                      <br>  
+                      <div class="container">
+                          
+                          <div class="table-responsive">          
+                          <table class="table collapse" id="OptionTable">
+                            <col width="4%">
+                            <col width="76%">
+                            <col width="10%">
+                            <col width="10%">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th class="text-center">Text</th>
+                                <th>Tick</th>
+                                <th>Marks</th>
+                                
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr id="OptionRow1" style="visibility: hidden">
+                                <td>1</td>
+                                <td><textarea rows="1" class="form-control" id="OptionText0" ></textarea></td>
+                                <td><input type="radio" name="AnswerInput" id="MCA1"  value="A">
+                                  
+                                </td>
+                                <td></td>
+                                
+                              </tr>
+                              <tr id="OptionRow2" style="visibility: hidden">
+                                  <td>2</td>
+                                  <td><textarea rows="1" class="form-control" id="OptionText1" ></textarea></td>
+                                  <td><input type="radio" name="AnswerInput" id="MCA2"  value="B">
+                                   
+                                  </td>
+                                  <td></td>
+                                  
+                                </tr>
+                                <tr id="OptionRow3" style="visibility: hidden">
+                                    <td>3</td>
+                                    <td><textarea rows="1" class="form-control" id="OptionText2" ></textarea></td>
+                                    <td><input type="radio" name="AnswerInput" id="MCA3"  value="C" >
+                                      
+                                    </td>
+                                    <td></td>
+                                    
+                                  </tr>
+                                  <tr id="OptionRow4" style="visibility: hidden">
+                                      <td>4</td>
+                                      <td><textarea rows="1" class="form-control" id="OptionText3" ></textarea></td>
+                                      <td><input type="radio" name="AnswerInput" id="MCA4"  value="D" >
+                                        
+                                      </td>
+                                      <td></td>
+                                      
+                                    </tr>
+                                    <tr id="OptionRow5" style="visibility: hidden" >
+                                        <td>5</td>
+                                        <td><textarea rows="1" class="form-control" id="OptionText4" ></textarea></td>
+                                        <td><input type="radio" name="AnswerInput" id="MCA5" value="E">
+                                          
+                                        </td>
+                                        <td></td>
+                                        
+                                      </tr>
+                            </tbody>
+                          </table>
+                          </div>
+                        </div>
+
+                      
+          </fieldset>
+                    
+
+                        <div class=" text-center btn-group-toggle"> 
+                          <input type="submit" class="btn btn-secondary btn-sm" value="Next Question" onclick="" >
+                          <input type="button" class=" btn btn-secondary btn-sm" value="Submit" onclick="QuestionSubmit()">
+                        </div>
+
+                 </form>
+
+                
+    </div>
+  </div>
+
+    </body>  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.8/js/mdb.min.js"></script>
+    <!-- JQuery Validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+    <!-- TakeTest JS File -->
+    <script type="text/javascript" src="js/TakeTest.js"></script>
+    <!-- TakeQuestion JS File -->
+    <script src="TakeQuestions.js"></script>
+</html>
