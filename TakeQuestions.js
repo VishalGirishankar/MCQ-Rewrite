@@ -182,7 +182,7 @@ $(document).ready(function(){
 
 // Form Validation
 
-jQuery.validator({
+jQuery.validator.setDefaults({
     debug: true,
     success: "valid"
   });
