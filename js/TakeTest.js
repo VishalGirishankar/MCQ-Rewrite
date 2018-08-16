@@ -79,7 +79,7 @@ var NextQuestion = function(who) // Next, Back button onclick event
         {
             document.getElementById("NextQuestion").innerHTML="Next";
         }
-        $('#AnswerBox'+QNo).html(QNo);
+        
         if (QNo<(Questions.length))
         {
 
@@ -135,7 +135,7 @@ var GetAnswer= function(who)
         if(User.Score[QNo]==undefined)
         {
         User.Score[QNo]="NotAnswer";
-        document.getElementById("AnswerBox"+[QNo]).style.background="red";
+        document.getElementById("AnswerBox"+[QNo]).style.background="#f70808";
         }
     }
 
@@ -239,13 +239,13 @@ function checkSecond(sec)
   return sec;
 }
 
-function CreateAnswerBox ()
+function CreateAnswerBox () 
 {
-   let Row = $("<div class='row row-horizontal' id='AnswerTableRow1' > </div>")
+   let Row = $("<div class='row row-horizontal rounded AnswerTableRow' id='AnswerTableRow' ></div>")
    let length = Questions.length;
    for(let q=1;q<=(length-1);q++)
    {
-       let col = $("<div class='col' id='AnswerBox"+q+"' onclick='NextQuestion("+q+")'></div>")
+       let col = $("<div class='col text-center' id='AnswerBox"+q+"' onclick='NextQuestion("+q+")'>"+q+"</div>")
        $(Row).append(col);
    }
 
