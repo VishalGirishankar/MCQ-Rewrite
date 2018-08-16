@@ -188,7 +188,8 @@ var CheckAnswer= function(who) //CALLED by Next Question To verify whether all t
                 User.Score[Total]++;
             }
         }
-
+        
+        localStorage.setItem('UserDetails',User);
         
         var myJsonString = JSON.stringify(User);
         var blob = new Blob([myJsonString], {
@@ -198,7 +199,7 @@ var CheckAnswer= function(who) //CALLED by Next Question To verify whether all t
         );
         
         var userLink = document.createElement('a');
-        userLink.setAttribute('download',"questions"+".json" );
+        userLink.setAttribute('download',"Result"+".json" );
         userLink.setAttribute('href',window.URL.createObjectURL(blob));
         userLink.click();
         //saveAs(blob, StudntDtl2[0].EmployeeId+".txt");
@@ -207,8 +208,12 @@ var CheckAnswer= function(who) //CALLED by Next Question To verify whether all t
         document.getElementById("McqHeader").innerHTML="End of Test";
         document.getElementById("QuestionButton").style.display="none"; // Next and Backward button
         document.getElementById("McqContent").style.display="none";// Header
-        document.getElementById("ShowResult").style.display="block";
+        $('#McqHeader').after("<a href='CheckAnswer.html' class='btn btn-secondary'>Check Answer</a>");
         document.getElementById("TimerDiv").style.display="none";
+        $('#AnswerStatus').remove();
+        localStorage.setItem("UserDetails",JSON.stringify(User));
+
+        
     }
 }
 
