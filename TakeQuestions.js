@@ -3,6 +3,14 @@ var QuestionsSet =
     QuestionHeader:"C# Multiple Choice Questions"
     }
 ];
+var NumToOpt = function(Opt) // to use convert Alpha options to numeric options 
+{
+    if(Opt==1) return "A";
+    else if (Opt==2) return "B";
+    else if(Opt==3) return "C";
+    else if(Opt==4) return "D";
+    else if(Opt==5) return "E";
+}
 var QuestionNo =1; 
 var GetQuestion = function()
 {
@@ -37,7 +45,7 @@ var GetQuestion = function()
     $("#QText").val('');
     $("#NumOption").val('');
     $("#NumCorrect").val('1');
-    for(let i=0;i<=4;i++)
+    for(let i=1;i<=QuestionsSet[QuestionNo].NumOption;i++)
     {
         document.getElementById("OptionText"+[i]).value="";
     }
@@ -50,7 +58,7 @@ var GetQuestion = function()
         });
    }
    QuestionNo++;
-    console.log(QuestionNo)
+    console.log("Question No: "+QuestionNo);
 
    
 
@@ -86,6 +94,27 @@ var Allow=false;
 function OptionDisplay()
 {   
     let q=$("#NumOption").val();
+    
+    for(let i=1;i<=5;i++) //To hide
+    {
+        $("#OptionRow"+[i]).remove();
+    }
+
+    for(let i=1;i<=q;i++) //To Show
+    {
+        let Row = $('<tr id="OptionRow'+i+'"></tr>');
+        let col1 =$('<td>'+i+'</td>');
+        let col2 =$('<td><textarea rows="1" class="form-control" id="OptionText'+i+'" required></textarea></td>')
+        let OptNUm = NumToOpt(q);
+        let col3 =$('<td><input type="radio" name="AnswerInput" value="'+OptNUm+' required"></td>');
+        let col4 =$('<td><label id="Mark'+q+'></td>')
+        $(Row).append(col1);
+        $(Row).append(col2);
+        $(Row).append(col3);
+        $(Row).append(col4);
+        $("tbody").append(Row);
+    }
+
     let temp = document.querySelector('input[name="AnswerType"]:checked').value;
 
     if(temp=="MCQ")
@@ -97,18 +126,8 @@ function OptionDisplay()
         $("input[name*=AnswerInput]").attr("type","checkbox");
     }
 
+    
     $("#OptionTable").addClass("collapse show");
-
-    for(let i=1;i<=5;i++) //To hide
-    {
-        $("#OptionRow"+[i]).css("visibility", "hidden");
-    }
-
-    for(let i=1;i<=q;i++) //To Show
-        {
-        $("#OptionRow"+[i]).css("visibility", "visible");
-        }
-
 }
 
 
@@ -132,7 +151,7 @@ $("#NumOption").blur(function() {
     }
     else
     {
-        alert("Enter Val btwn 2-5");
+        
         $(this).val("");
     }
 
@@ -187,9 +206,5 @@ jQuery.validator.setDefaults({
     success: "valid"
   });
   $( "#QForm" ).validate({
-    rules: {
-        QTopic: {
-        required: true
-      }
-    }
+    
   });
