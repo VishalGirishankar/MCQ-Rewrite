@@ -12,8 +12,29 @@ var NumToOpt = function(Opt) // to use convert Alpha options to numeric options
     else if(Opt==5) return "E";
 }
 var QuestionNo =1; 
+
+function ValdtAnsType ()
+{
+    let ULength 
+   let Length= $('input[name=AnswerInput]:checked').length;
+   if(Length==0)
+   {
+       alert("Select the correct option")
+       return false
+   }
+   else if(Length<ULength || Length>Length)
+   {
+        alert("Tick options equal to Num of correct options");
+        return false
+   } 
+   else
+   return true
+}
+
 var GetQuestion = function()
 {
+    if(ValdtAnsType())
+    {
     QuestionsSet[QuestionNo]={};
     console.log(QuestionNo);
     QuestionsSet[QuestionNo].Topic=document.getElementById("QTopic").value;
@@ -46,7 +67,7 @@ var GetQuestion = function()
    QuestionNo++;
     console.log("Question No: "+QuestionNo);
     RemoveData()
-
+    }
     return false;
   
 }
@@ -75,9 +96,9 @@ $('#QForm').submit(function (e) {
 
 var QuestionSubmit= function()
 {
+    if(ValdtAnsType())
+    {
     GetQuestion();
-    
-
     var myJsonString = JSON.stringify(QuestionsSet);
         var blob = new Blob([myJsonString], {
             type: "application/json;charset=charset=utf-8"
@@ -85,6 +106,7 @@ var QuestionSubmit= function()
         saveAs(blob, "Question.json");
 
         document.getElementById("QuestionForm").innerHTML="";
+    }
 }
 
 var Allow=false;
