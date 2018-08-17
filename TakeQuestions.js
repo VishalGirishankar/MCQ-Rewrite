@@ -15,7 +15,7 @@ var QuestionNo =1;
 var GetQuestion = function()
 {
     QuestionsSet[QuestionNo]={};
-    //console.log(QuestionNo);
+    console.log(QuestionNo);
     QuestionsSet[QuestionNo].Topic=document.getElementById("QTopic").value;
     QuestionsSet[QuestionNo].Difficulty=document.querySelector('input[name="QDifficultyLevel"]:checked').value;
     QuestionsSet[QuestionNo].Question=document.getElementById("QText").value;
@@ -23,8 +23,8 @@ var GetQuestion = function()
     QuestionsSet[QuestionNo].NumOption=document.getElementById("NumOption").value;
     QuestionsSet[QuestionNo].NumCorrect=document.getElementById("NumCorrect").value;
     QuestionsSet[QuestionNo].Options={};
-    for(let i=0;i<=QuestionsSet[QuestionNo].NumOption;i++)
-    {
+    for(let i=1;i<=QuestionsSet[QuestionNo].NumOption;i++)
+    {   console.log(i)
         QuestionsSet[QuestionNo].Options[i]=document.getElementById("OptionText"+[i]).value;
     }
 
@@ -42,13 +42,20 @@ var GetQuestion = function()
     
     
     console.log(QuestionsSet);
+    
+   QuestionNo++;
+    console.log("Question No: "+QuestionNo);
+    RemoveData()
+
+    return false;
+  
+}
+
+function RemoveData()
+{
     $("#QText").val('');
     $("#NumOption").val('');
     $("#NumCorrect").val('1');
-    for(let i=1;i<=QuestionsSet[QuestionNo].NumOption;i++)
-    {
-        document.getElementById("OptionText"+[i]).value="";
-    }
     if(QuestionsSet[QuestionNo].AnswerType=="MCQ")
     document.querySelector('input[name=AnswerInput]:checked').checked=false;
    else
@@ -57,17 +64,8 @@ var GetQuestion = function()
             $(this).prop('checked',false);
         });
    }
-   QuestionNo++;
-    console.log("Question No: "+QuestionNo);
 
-   
-
-    // var myJsonString = JSON.stringify(QuestionsSet);
-    //     var blob = new Blob([myJsonString], {
-    //         type: "application/json;charset=charset=utf-8"
-    //     });
-    //     saveAs(blob, "Question.txt");
-  
+   $("#OptionTable").addClass("collapse");
 }
 
 $('#QForm').submit(function (e) { 
@@ -95,10 +93,7 @@ function OptionDisplay()
 {   
     let q=$("#NumOption").val();
     
-    for(let i=1;i<=5;i++) //To hide
-    {
-        $("#OptionRow"+[i]).remove();
-    }
+    
 
     for(let i=1;i<=q;i++) //To Show
     {
@@ -201,10 +196,30 @@ $(document).ready(function(){
 
 // Form Validation
 
-jQuery.validator.setDefaults({
-    debug: true,
-    success: "valid"
-  });
-  $( "#QForm" ).validate({
-    
-  });
+// jQuery.validator.setDefaults({
+//     debug: true,
+//     success: "valid"
+//   });
+//   $( "#QForm" ).validate({
+//     rules:{
+//         NumOption:{
+//             required:true
+//             },
+//         NumCorrect:{
+//             required:true
+//         },
+//         AnswerInput:{
+//             required:true
+//         }
+
+//     },
+//     messages:{
+//         NumOption:{
+//             required: "Number options is Required"
+//         },
+//         NumCorrect:{
+//             required: "Number Correct options is Required"
+//         }
+//     },
+   
+//   });
