@@ -1,6 +1,6 @@
 var QuestionsSet = 
 [   {
-    QuestionHeader:"C# Multiple Choice Questions"
+        Instructions
     }
 ];
 var NumToOpt = function(Opt) // to use convert Alpha options to numeric options 
@@ -15,14 +15,15 @@ var QuestionNo =1;
 
 function ValdtAnsType ()
 {
-    let ULength 
+    let ULength = $('#NumCorrect').val();
    let Length= $('input[name=AnswerInput]:checked').length;
+   console.log("Length of check box"+Length)
    if(Length==0)
    {
        alert("Select the correct option")
        return false
    }
-   else if(Length<ULength || Length>Length)
+   else if(Length<ULength || Length>ULength)
    {
         alert("Tick options equal to Num of correct options");
         return false
@@ -36,7 +37,6 @@ var GetQuestion = function()
     if(ValdtAnsType())
     {
     QuestionsSet[QuestionNo]={};
-    console.log(QuestionNo);
     QuestionsSet[QuestionNo].Topic=document.getElementById("QTopic").value;
     QuestionsSet[QuestionNo].Difficulty=document.querySelector('input[name="QDifficultyLevel"]:checked').value;
     QuestionsSet[QuestionNo].Question=document.getElementById("QText").value;
@@ -45,7 +45,7 @@ var GetQuestion = function()
     QuestionsSet[QuestionNo].NumCorrect=document.getElementById("NumCorrect").value;
     QuestionsSet[QuestionNo].Options={};
     for(let i=1;i<=QuestionsSet[QuestionNo].NumOption;i++)
-    {   console.log(i)
+    {   
         QuestionsSet[QuestionNo].Options[i]=document.getElementById("OptionText"+[i]).value;
     }
 
@@ -61,12 +61,12 @@ var GetQuestion = function()
         QuestionsSet[QuestionNo].CorrectOpt=document.querySelector('input[name*=AnswerInput]:checked').value;
      }
     
-    
+     
     console.log(QuestionsSet);
-    
+    RemoveData() ;
    QuestionNo++;
     console.log("Question No: "+QuestionNo);
-    RemoveData()
+    
     }
     return false;
   
@@ -85,11 +85,14 @@ function RemoveData()
             $(this).prop('checked',false);
         });
    }
-
+   for(let i=1;i<=5;i++) //To hide
+    {
+        $("#OptionText"+[i]).val('');
+    }
    $("#OptionTable").addClass("collapse");
 }
 
-$('#QForm').submit(function (e) { 
+$('#QForm').submit(function (e) {  // To disable form submit to avoid page reload
     e.preventDefault();
     
 });
@@ -115,7 +118,10 @@ function OptionDisplay()
 {   
     let q=$("#NumOption").val();
     
-    
+    for(let i=1;i<=5;i++) //To hide
+    {
+        $("#OptionRow"+[i]).remove();
+    }
 
     for(let i=1;i<=q;i++) //To Show
     {
@@ -123,7 +129,7 @@ function OptionDisplay()
         let col1 =$('<td>'+i+'</td>');
         let col2 =$('<td><textarea rows="1" class="form-control" id="OptionText'+i+'" required></textarea></td>')
         let OptNUm = NumToOpt(q);
-        let col3 =$('<td><input type="radio" name="AnswerInput" value="'+OptNUm+' required"></td>');
+        let col3 =$('<td><input type="radio" name="AnswerInput" value="'+OptNUm+'"></td>');
         let col4 =$('<td><label id="Mark'+q+'></td>')
         $(Row).append(col1);
         $(Row).append(col2);

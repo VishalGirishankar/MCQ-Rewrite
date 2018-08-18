@@ -32,7 +32,7 @@ $(document).ready(function()
 function StartTest() //Start button on click event
 {
     $('#StartTest').remove();
-    $('#McqHeader').html(Questions[0].QuestionHeader);
+   
     $('#AnswerTag').show();
     
     $('#QuestionButton').show();
@@ -72,21 +72,23 @@ var NextQuestion = function(who) // Next, Back button onclick event
 
         if(QNo==(Questions.length-1))
         {
-            // console.log("AS  "+Questions.length)
+            
             document.getElementById("NextQuestion").innerHTML="Submit";
         }
         else
         {
             document.getElementById("NextQuestion").innerHTML="Next";
         }
+
+        
         
         if (QNo<(Questions.length))
         {
-
+            $('#McqHeader').html(Questions[QNo].Topic);
             $('#McqContent').html(Questions[QNo].Question);
             
             for (let q=0;q<5;q++) // to hide all the Rows 
-            {   console.log("Hide Row "+q)
+            {   
                 $('#Row'+q).hide();
             }
             let length = Questions[QNo].NumOption
@@ -98,7 +100,16 @@ var NextQuestion = function(who) // Next, Back button onclick event
                 $("#Opt"+q).html(Questions[QNo].Options[q]);
                 
             }
-            
+            // To Change Based on the CHOICE
+            if(Questions[QNo].AnswerType=="MCQ")
+            {
+                $("input[name*=choice]").attr("type","radio");
+            }
+            else
+            {
+                $("input[name*=choice]").attr("type","checkbox");
+            }
+            // To Sow the already answered Questions Tick Mark
             if(User.Score[QNo]!=undefined && User.Score[QNo]!="NotAnswer")
             {
                 
@@ -122,13 +133,23 @@ var GetAnswer= function(who)
     if(document.querySelector('input[name="choice"]:checked'))
     {
        
-        
-        let RadioValue = document.querySelector('input[name="choice"]:checked').value;
+        if (Questions[QNo].AnswerType=="MCQ")
+        {
+            User.Score[QNo]= document.querySelector('input[name="choice"]:checked').value;
         document.querySelector('input[name="choice"]:checked').checked=false;
-    
-        User.Score[QNo]=RadioValue;
-        document.getElementById("AnswerBox"+[QNo]).style.background="green";
+        }
+        else
+        {   
+            User.Score[QNo]=[];
+            User.Score[QNo].ANS=[];
+            $.each($("input[name*=AnswerInput]:checked"), function(){
+                RadioValue.push($(this).val())
+            });
+        }
         
+        User.Score[QNo]
+        document.getElementById("AnswerBox"+[QNo]).style.background="green";
+        console.log('USER Score '+User.Score);
     }
     else
     {
