@@ -1,6 +1,6 @@
 var QuestionsSet = 
 [   {
-        Instructions
+        
     }
 ];
 var NumToOpt = function(Opt) // to use convert Alpha options to numeric options 
@@ -32,7 +32,7 @@ function ValdtAnsType ()
    return true
 }
 
-var GetQuestion = function()
+var GetQuestion = function() //Called By Next Question Button And Submit Function
 {
     if(ValdtAnsType())
     {

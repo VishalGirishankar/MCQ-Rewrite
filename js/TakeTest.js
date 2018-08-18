@@ -112,8 +112,17 @@ var NextQuestion = function(who) // Next, Back button onclick event
             // To Sow the already answered Questions Tick Mark
             if(User.Score[QNo]!=undefined && User.Score[QNo]!="NotAnswer")
             {
-                
+                if(Questions[QNo].AnswerType=="MCQ")   //for Mcq
                 $('#'+User.Score[QNo]).prop('checked',true);
+                else
+                {
+                    for(let i=0;i<User.Score[QNo].length;i++)     // for MCA
+                    {
+                        console.log(User.Score[QNo].length)
+                        $('#'+User.Score[QNo][i]).prop('checked',true);
+                        console.log(User.Score[QNo][i]);
+                    }
+                }
             }
             Allow=true;     
         }
@@ -128,8 +137,7 @@ var NextQuestion = function(who) // Next, Back button onclick event
 var GetAnswer= function(who)
 {
     
-    //console.log("starting getanswer = "+QNo);
-       
+
     if(document.querySelector('input[name="choice"]:checked'))
     {
        
@@ -141,15 +149,17 @@ var GetAnswer= function(who)
         else
         {   
             User.Score[QNo]=[];
-            User.Score[QNo].ANS=[];
-            $.each($("input[name*=AnswerInput]:checked"), function(){
-                RadioValue.push($(this).val())
+
+           
+            $.each($("input[name*=choice]:checked"), function(){
+                User.Score[QNo].push($(this).val())
+                $(this).prop('checked',false)
             });
         }
         
-        User.Score[QNo]
+       
         document.getElementById("AnswerBox"+[QNo]).style.background="green";
-        console.log('USER Score '+User.Score);
+        console.log(User);
     }
     else
     {
@@ -204,9 +214,31 @@ var CheckAnswer= function(who) //CALLED by Next Question To verify whether all t
     {
         for(let q=1;q<User.Score.length;q++)
         {
-            if(User.Score[q]==Questions[q].CorrectOpt)
+
+            if(Questions[q].AnswerType=="MCQ")
             {
-                User.Score[Total]++;
+            
+                if(User.Score[q]==Questions[q].CorrectOpt)
+                {
+                    User.Score[Total]++;
+                    console.log("Mark MCQ "+User.Score[Total]);
+                }
+                
+            }
+            else
+            {
+                let MCAMark = (1/Questions[q].CorrectOpt.length).toFixed(2);
+                console.log("MCA MARK "+MCAMark)
+                for(let i=0;i<Questions[q].CorrectOpt.length;i++)
+                {    console.log('MCA Loop Lenght'+Questions[q].CorrectOpt.length)
+                    if (User.Score[q][i]==Questions[q].CorrectOpt[i])
+                    {
+                        console.log("Loop in "+Questions[q].CorrectOpt[i])
+                        User.Score[Total]=(User.Score[Total]+MCAMark);
+                        console.log("Mark MCA "+User.Score[Total]);
+                    }
+
+                }
             }
         }
         

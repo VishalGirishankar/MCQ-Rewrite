@@ -38,6 +38,7 @@ var CheckAnswerShow =function() // Onclick event of button #CheckAnswer
     for(let i=1; i<Questions.length; i++)
     {
         $('#ShowQuestion'+i).html(Questions[i].Question +"<br> <br>");
+       
         if(Questions[i].CorrectOpt==User.Score[i])
         {   
             let OptNum= OptionToNum(Questions[i].CorrectOpt);
