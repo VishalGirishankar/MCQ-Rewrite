@@ -38,25 +38,31 @@ var CheckAnswerShow =function() // Onclick event of button #CheckAnswer
     for(let i=1; i<Questions.length; i++)
     {
         $('#ShowQuestion'+i).html(Questions[i].Question +"<br> <br>");
-       
-        if(Questions[i].CorrectOpt==User.Score[i])
-        {   
-            let OptNum= OptionToNum(Questions[i].CorrectOpt);
-            console.log(OptNum);
-            $( "#ShowQuestion"+i).after( "<div>Your Answer : </div>" );
-            $('#CorrectShowAnswer'+i).html("&emsp;&emsp;"+Questions[i].Options[OptNum]+ " ----> "+"Correct <br> <br>");
-            $('#CorrectShowAnswer'+i).css("color","green");
+        if(Questions[i].AnswerType=="MCQ")
+        {
+            if(Questions[i].CorrectOpt==User.Score[i])
+            {   
+                let OptNum= OptionToNum(Questions[i].CorrectOpt);
+                console.log(OptNum);
+                $( "#ShowQuestion"+i).after( "<div>Your Answer : </div>" );
+                $('#CorrectShowAnswer'+i).html("&emsp;&emsp;"+Questions[i].Options[OptNum]+ " ----> "+"Correct <br> <br>");
+                $('#CorrectShowAnswer'+i).css("color","green");
+            }
+            else
+            {
+                let CON = OptionToNum(Questions[i].CorrectOpt); // CON = Correct Option Number
+                let WON = OptionToNum(User.Score[i]); // WON = Worng Option Number
+                $( "#ShowQuestion"+i).after( "<div>Your Answer : </div>" );
+                $('#WrongShowAnswer'+i).html("&emsp;&emsp;"+Questions[i].Options[WON]+ " ----> "+"Worng");
+                $('#WrongShowAnswer'+i).css("color","red");
+                $( "#WrongShowAnswer"+i).after( "<div>Correct Answer : </div>" );
+                $('#CorrectShowAnswer'+i).html("&emsp;&emsp;"+Questions[i].Options[CON]+ "----> Is the Right Answer <br> <br>");
+
+            }
         }
         else
         {
-            let CON = OptionToNum(Questions[i].CorrectOpt); // CON = Correct Option Number
-            let WON = OptionToNum(User.Score[i]); // WON = Worng Option Number
-            $( "#ShowQuestion"+i).after( "<div>Your Answer : </div>" );
-            $('#WrongShowAnswer'+i).html("&emsp;&emsp;"+Questions[i].Options[WON]+ " ----> "+"Worng");
-            $('#WrongShowAnswer'+i).css("color","red");
-            $( "#WrongShowAnswer"+i).after( "<div>Correct Answer : </div>" );
-            $('#CorrectShowAnswer'+i).html("&emsp;&emsp;"+Questions[i].Options[CON]+ "----> Is the Right Answer <br> <br>");
-
+            
         }
     }
 

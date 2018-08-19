@@ -212,37 +212,32 @@ var CheckAnswer= function(who) //CALLED by Next Question To verify whether all t
     }
     else
     {
-        for(let q=1;q<User.Score.length;q++)
+        for(let q=1;q<User.Score.length;q++) // Here let q is the QuestionNo. as well as AnswerNo. And i is used for Itration
         {
 
             if(Questions[q].AnswerType=="MCQ")
             {
-            
                 if(User.Score[q]==Questions[q].CorrectOpt)
                 {
                     User.Score[Total]++;
                     console.log("Mark MCQ "+User.Score[Total]);
-                }
-                
+                }    
             }
             else
             {
-                let MCAMark = (1/Questions[q].CorrectOpt.length).toFixed(2);
-                console.log("MCA MARK "+MCAMark)
+                let MCAMark = (1/Questions[q].CorrectOpt.length);
                 for(let i=0;i<Questions[q].CorrectOpt.length;i++)
-                {    console.log('MCA Loop Lenght'+Questions[q].CorrectOpt.length)
-                    if (User.Score[q][i]==Questions[q].CorrectOpt[i])
+                {    
+                    if (User.Score[q].indexOf(Questions[q].CorrectOpt[i])!=-1)
                     {
-                        console.log("Loop in "+Questions[q].CorrectOpt[i])
-                        User.Score[Total]=(User.Score[Total]+MCAMark);
-                        console.log("Mark MCA "+User.Score[Total]);
+                        User.Score[Total]=(User.Score[Total]+MCAMark); 
                     }
 
                 }
             }
         }
         
-        localStorage.setItem('UserDetails',User);
+        localStorage.setItem('UserDetails',User); // Save The User in the Local storage and Used In Check Answer.js
         
         var myJsonString = JSON.stringify(User);
         var blob = new Blob([myJsonString], {
