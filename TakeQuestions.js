@@ -224,30 +224,30 @@ $(document).ready(function(){
 
 // Form Validation
 
-// jQuery.validator.setDefaults({
-//     debug: true,
-//     success: "valid"
-//   });
-//   $( "#QForm" ).validate({
-//     rules:{
-//         NumOption:{
-//             required:true
-//             },
-//         NumCorrect:{
-//             required:true
-//         },
-//         AnswerInput:{
-//             required:true
-//         }
+jQuery.validator.setDefaults({
+    debug: true,
+    success: "valid"
+  });
+  $( "#QForm" ).validate({
+    rules:{
+        NumOption:{
+            required:true
+            },
+        NumCorrect:{
+            required:true
+        },
+        AnswerInput:{
+            required:true
+        }
 
-//     },
-//     messages:{
-//         NumOption:{
-//             required: "Number options is Required"
-//         },
-//         NumCorrect:{
-//             required: "Number Correct options is Required"
-//         }
-//     },
+    },
+    messages:{
+        NumOption:{
+            required: "Number options is Required"
+        },
+        NumCorrect:{
+            required: "Number Correct options is Required"
+        }
+    },
    
-//   });
+  });

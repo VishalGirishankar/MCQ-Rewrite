@@ -5,11 +5,11 @@
     {
         "InstructionSet":
         [
-            "1. So and So <br>",
-            "2. so and so <br>",
-            "3. so and so <br>",
-            "4. so and so <br>",
-            "5. so and so <br>"
+            "1. Do Not press the Go Back button, it will end the test <br>",
+            "2. Total time for the test is 10:00 Mins <br>",
+            "3. Instruction 3 <br>",
+            "4. Instruction 4 <br>",
+            "5. Instruction 5 <br>"
         ]
         
         
