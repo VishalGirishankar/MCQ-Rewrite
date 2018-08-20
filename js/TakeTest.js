@@ -41,6 +41,11 @@ function StartTest() //Start button on click event
     $('#TimerDiv').show();
     $('#NotAnswerMark').show();
     $('#timer').html(10 + ":" + 00);
+    // $("#sideModalTLInfo").on('shown.bs.modal', function(){
+    //     alert("Hello World!");
+    // });
+
+    $('#sideModalTLInfo').modal('handleUpdate')
 
     NextQuestion();
     
@@ -304,3 +309,4 @@ function CreateAnswerBox ()
 
    $('#AnswerStatus').append(Row);
 }
+
