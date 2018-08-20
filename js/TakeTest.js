@@ -73,11 +73,11 @@ var NextQuestion = function(who) // Next, Back button onclick event
         if(QNo==(Questions.length-1))
         {
             
-            document.getElementById("NextQuestion").innerHTML="Submit";
+            document.getElementById("NextQuestion").style.display="none";
         }
         else
         {
-            document.getElementById("NextQuestion").innerHTML="Next";
+            document.getElementById("NextQuestion").style.display="block";
         }
 
         
@@ -206,7 +206,7 @@ var CheckAnswer= function(who) //CALLED by Next Question To verify whether all t
     
     if (Completed == false)
     {
-        alert("You Have'nt Answered queation "+[NotAnswered])
+        alert("You Have'nt Answered question "+[NotAnswered])
         NotAnswered="";
         QNo--;
     }
