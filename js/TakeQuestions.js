@@ -214,7 +214,6 @@ $(document).ready(function(){
         
         if (Allow==true)
         {
-            
             OptionDisplay();
         }
 

@@ -41,11 +41,7 @@ function StartTest() //Start button on click event
     $('#TimerDiv').show();
     $('#NotAnswerMark').show();
     $('#timer').html(10 + ":" + 00);
-    // $("#sideModalTLInfo").on('shown.bs.modal', function(){
-    //     alert("Hello World!");
-    // });
-
-    $('#sideModalTLInfo').modal('handleUpdate')
+    $('#basicExampleModal').modal('handleUpdate')
 
     NextQuestion();
     
@@ -171,7 +167,7 @@ var GetAnswer= function(who)
         if(User.Score[QNo]==undefined)
         {
         User.Score[QNo]="NotAnswer";
-        document.getElementById("AnswerBox"+[QNo]).style.background="#f70808";
+        document.getElementById("AnswerBox"+[QNo]).style.background="#30cfc0";
         }
     }
 
