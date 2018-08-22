@@ -41,7 +41,7 @@ function StartTest() //Start button on click event
     $('#TimerDiv').show();
     $('#NotAnswerMark').show();
     $('#timer').html(10 + ":" + 00);
-    $('#basicExampleModal').modal('handleUpdate')
+    $('#basicExampleModal').modal('toggle')
 
     NextQuestion();
     
