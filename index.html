@@ -65,14 +65,14 @@
             <p id="McqHeader"  class="text-center" style="display: none" style="font-weight: bolder">........</p>
             <br>
             <p id="McqContent" class="" style="display: none"></p>
-            <button class="btn btn-secondary center"    id="TakeTest">Take the Test</button>
-            <button class="btn btn-secondary"    id="StartTest" style="display: none"  onclick="StartTest()">Start Test</button>
+            <button class="btn btn-primary center"    id="TakeTest">Take the Test</button>
+            <button class="btn btn-primary"    id="StartTest" style="display: none"  onclick="StartTest()">Start Test</button>
             
             <div id="AnswerTag" class="container" style=" display: none"><!-- Start Of Row Tag -->
             <!-- Row 1 -->  
             <div class="row " id="Row0" style="display: none">
               <div  class="col-md-2  " >
-                <label id="" class="btn btn-secondary" >
+                <label id="" class="btn btn-primary" >
                   <input  type="radio" id="A" name="choice"  value="A" > A
                 </label> 
               </div>
@@ -84,7 +84,7 @@
           <div class="row " id="Row1" style="display: none">
             <div class="col-sm-2 col-xs-2">
             
-               <label id="" class="btn btn-secondary center-block">
+               <label id="" class="btn btn-primary center-block">
                   <input  type="radio"  name="choice"  value="B" id="B" > B
                 </label>  
               
@@ -96,7 +96,7 @@
           <!-- Row 3 -->
           <div class="row " id="Row2" style="display: none">
             <div class="col-sm-2 col-xs-2">
-              <label id="" class="btn btn-secondary">
+              <label id="" class="btn btn-primary">
                 <input  type="radio"  name="choice"  value="C" id="C" > C
               </label> 
             </div>
@@ -107,7 +107,7 @@
             <!-- Row 4 -->
             <div class="row " id="Row3" style="display: none">
               <div class="col-sm-2 col-xs-2">
-                <label id="" class="btn btn-secondary">
+                <label id="" class="btn btn-primary">
                   <input  type="radio"  name="choice"  value="D" id="D" > D
                 </label> 
               </div>
@@ -118,7 +118,7 @@
               <!-- Row 5 -->
               <div class="row " id="Row4" style="display: none">
                 <div class="col-sm-2 col-xs-2">
-                  <label id="" class="btn btn-secondary">
+                  <label id="" class="btn btn-primary">
                     <input  type="radio"  name="choice"  value="E" id="E" > E
                   </label> 
                 </div>
@@ -130,11 +130,11 @@
 
             <!-- Question Button -->
             <div id="QuestionButton" class="btn-group QButton" style="display: none ;"> <!-- Next button -->
-              <button id="BackQuestion" class="btn btn-secondary "  onclick="NextQuestion('Back')">Back</button> 
-             <button id="NextQuestion" class="btn btn-secondary "  onclick="NextQuestion('Next')">Next</button>
-             <button id="SubmitTest" class="btn btn-secondary " onclick="CheckAnswer('SubmitTest')" >Submit</button>
+              <button id="BackQuestion" class="btn btn-primary "  onclick="NextQuestion('Back')">Back</button> 
+             <button id="NextQuestion" class="btn btn-primary "  onclick="NextQuestion('Next')">Next</button>
+             <button id="SubmitTest" class="btn btn-primary " onclick="CheckAnswer('SubmitTest')" >Submit</button>
               
-             <label for="NotAnswerMark" class="btn btn-secondary btn-group" >
+             <label for="NotAnswerMark" class="btn btn-primary btn-group" >
               <input type="radio" id="NotAnswerMark" >AnsLater
             </label>
             </div>
@@ -166,7 +166,7 @@
       Are You sure you want to submit the test
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="SubmitTest('No')">No</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="SubmitTest('No')">No</button>
         <button type="button" onclick="SubmitTest('Yes')" data-dismiss="modal" class="btn btn-primary">Submit</button>
       </div>
     </div>

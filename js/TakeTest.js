@@ -269,10 +269,12 @@ function SubmitTest(who)
         document.getElementById("McqHeader").innerHTML="End of Test";
         document.getElementById("QuestionButton").style.display="none"; // Next and Backward button
         document.getElementById("McqContent").style.display="none";// Header
-        $('#McqHeader').after("<a href='CheckAnswer.html' class='btn btn-secondary'>Check Answer</a>");
         document.getElementById("TimerDiv").style.display="none";
         $('#AnswerStatus').remove();
         localStorage.setItem("UserDetails",JSON.stringify(User));
+        let HREF = document.createElement('a');
+        HREF.setAttribute('href',"CheckAnswer.html");
+        HREF.click();
     }
 
 }
