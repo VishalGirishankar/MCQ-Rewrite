@@ -41,7 +41,9 @@ function StartTest() //Start button on click event
     $('#TimerDiv').show();
     $('#NotAnswerMark').show();
     $('#timer').html(10 + ":" + 00);
-    $('#basicExampleModal').modal('toggle')
+
+    for (let q = 1 ;q<Questions.length;q++)
+    User.Score[q]='NotAnswer';
 
     NextQuestion();
     
@@ -127,10 +129,7 @@ var NextQuestion = function(who) // Next, Back button onclick event
             }
             Allow=true;     
         }
-        else
-        {
-            CheckAnswer("NextQuestion");
-        }
+        
 
 }
 
@@ -192,7 +191,7 @@ var CheckAnswer= function(who) //CALLED by Next Question To verify whether all t
 {
     let NotAnswered="";
     let Completed = true;
-    if (who=="NextQuestion")
+    if (who=="SubmitTest")
     {
         for(let q=1;q<User.Score.length;q++)
         {
@@ -201,17 +200,23 @@ var CheckAnswer= function(who) //CALLED by Next Question To verify whether all t
                 NotAnswered += q+",";
                 Completed = false;
             }
-        
         }
     }
     
     if (Completed == false)
+    {    $('#basicExampleModal').modal('toggle');
+        $('#ModalMessage').html("You Havan't answer the the following Questions : "+NotAnswered+"<br Still Do You want to Submit>");  
+    }
+}
+
+function SubmitTest(who)
+{
+    if(who == "No")
     {
-        alert("You Have'nt Answered question "+[NotAnswered])
         NotAnswered="";
         QNo--;
     }
-    else
+    if (who == "Yes")
     {
         for(let q=1;q<User.Score.length;q++) // Here let q is the QuestionNo. as well as AnswerNo. And i is used for Itration
         {
@@ -261,9 +266,8 @@ var CheckAnswer= function(who) //CALLED by Next Question To verify whether all t
         document.getElementById("TimerDiv").style.display="none";
         $('#AnswerStatus').remove();
         localStorage.setItem("UserDetails",JSON.stringify(User));
-
-        
     }
+
 }
 
 function StartTimer() 
@@ -276,7 +280,7 @@ function StartTimer()
   if(s==59){m=m-1}
     if(m==-1)
     {   
-        CheckAnswer("startTimer");
+        SubmitTest("Yes"); // after time get over calls the Submit test to submit
         break list;
     }
   
@@ -306,3 +310,8 @@ function CreateAnswerBox ()
    $('#AnswerStatus').append(Row);
 }
 
+
+// $('#SubmitTest').click(function (e) { 
+//     e.preventDefault();
+//     $('#basicExampleModal').modal('toggle');
+// });

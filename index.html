@@ -132,7 +132,7 @@
             <div id="QuestionButton" class="btn-group QButton" style="display: none ;"> <!-- Next button -->
               <button id="BackQuestion" class="btn btn-secondary "  onclick="NextQuestion('Back')">Back</button> 
              <button id="NextQuestion" class="btn btn-secondary "  onclick="NextQuestion('Next')">Next</button>
-             <button id="Submit" class="btn btn-secondary "  onclick="NextQuestion('Submit')">Submit</button>
+             <button id="SubmitTest" class="btn btn-secondary " onclick="CheckAnswer('SubmitTest')" >Submit</button>
               
              <label for="NotAnswerMark" class="btn btn-secondary btn-group" >
               <input type="radio" id="NotAnswerMark" >AnsLater
@@ -157,17 +157,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title text-center" id="exampleModalLabel">Submit Test</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body" id="ModalMessage">
+      Are You sure you want to submit the test
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="SubmitTest('No')">No</button>
+        <button type="button" onclick="SubmitTest('Yes')" data-dismiss="modal" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </div>
