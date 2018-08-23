@@ -163,9 +163,8 @@ var GetAnswer= function(who)
     }
     else
     {
-        if(User.Score[QNo]==undefined)
+        if(User.Score[QNo]=="NotAnswer")
         {
-        User.Score[QNo]="NotAnswer";
         document.getElementById("AnswerBox"+[QNo]).style.background="#30cfc0";
         }
     }
@@ -207,14 +206,22 @@ var CheckAnswer= function(who) //CALLED by Next Question To verify whether all t
     {    $('#basicExampleModal').modal('toggle');
         $('#ModalMessage').html("You Havan't answer the the following Questions : "+NotAnswered+"<br Still Do You want to Submit>");  
     }
+    else
+    {
+        $('#basicExampleModal').modal('toggle');
+        $('#ModalMessage').html("Are You Sure Do you Want To Submit");  
+    }
 }
 
 function SubmitTest(who)
 {
+    GetAnswer("Next")
     if(who == "No")
     {
+        console.log(QNo)
         NotAnswered="";
         QNo--;
+        console.log(QNo)
     }
     if (who == "Yes")
     {
@@ -311,7 +318,3 @@ function CreateAnswerBox ()
 }
 
 
-// $('#SubmitTest').click(function (e) { 
-//     e.preventDefault();
-//     $('#basicExampleModal').modal('toggle');
-// });
