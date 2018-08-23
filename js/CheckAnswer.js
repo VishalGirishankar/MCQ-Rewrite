@@ -62,7 +62,18 @@ var CheckAnswerShow =function() // Onclick event of button #CheckAnswer
         }
         else
         {
-            
+            if (Questions[i].CorrectOpt==User.Score[i])
+            {
+                $( "#ShowQuestion"+i).after( "<div>Your Answer : </div>" );
+                 $('#CorrectShowAnswer'+i).html("&emsp;&emsp; ----> Is the Right Answer <br> <br>");
+                 $('#CorrectShowAnswer'+i).css("color","green");
+            }
+            else
+            {
+                $( "#ShowQuestion"+i).after( "<div>Your Answer : </div>" );
+                $('#WrongShowAnswer'+i).html("&emsp;&emsp;  ----> "+"Worng");
+                $('#WrongShowAnswer'+i).css("color","red");
+            }
         }
     }
 
