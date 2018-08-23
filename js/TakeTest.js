@@ -57,7 +57,7 @@ var QNo=1; // itretion for Question number
 var Allow=false
 var NextQuestion = function(who) // Next, Back button onclick event
 {
-       
+        console.log("At Next Question "+QNo)
         if(Allow) // Allows To GetAnswer() if True And Vice Versa
         {
             GetAnswer(who);
@@ -73,7 +73,7 @@ var NextQuestion = function(who) // Next, Back button onclick event
             document.getElementById("BackQuestion").disabled=false;
         }
 
-        if(QNo==(Questions.length-1))
+        if(QNo>=(Questions.length-1))
         {
             
             document.getElementById("NextQuestion").style.display="none";
@@ -83,10 +83,14 @@ var NextQuestion = function(who) // Next, Back button onclick event
             document.getElementById("NextQuestion").style.display="block";
         }
 
-        
-        
-        if (QNo<(Questions.length))
+        if(who == "SubmitTest")
         {
+            CheckAnswer(who);
+        }
+        else if (QNo<(Questions.length))
+        {
+        console.log("At Next Question else if "+QNo)
+
             $('#McqHeader').html(Questions[QNo].Topic);
             $('#McqContent').html(Questions[QNo].Question);
             
@@ -136,7 +140,7 @@ var NextQuestion = function(who) // Next, Back button onclick event
 
 var GetAnswer= function(who)
 {
-    
+    console.log("At Get Answer "+QNo)    
 
     if(document.querySelector('input[name="choice"]:checked'))
     {
@@ -158,8 +162,8 @@ var GetAnswer= function(who)
         }
         
        
-        document.getElementById("AnswerBox"+[QNo]).style.background="green";
-        console.log(User);
+        document.getElementById("AnswerBox"+[QNo]).style.background="#7CFC00";
+        
     }
     else
     {
@@ -178,6 +182,10 @@ var GetAnswer= function(who)
         {
            QNo--;    
         }
+        else if (who=="SubmitTest")
+        {
+            // Do Nothing it been taken care in SubmitTest function
+        }
         else
         {
             QNo=who;
@@ -188,6 +196,8 @@ var GetAnswer= function(who)
 
 var CheckAnswer= function(who) //CALLED by Next Question To verify whether all the answer are Marked
 {
+    console.log("At Check Answer "+QNo)
+
     let NotAnswered="";
     let Completed = true;
     if (who=="SubmitTest")
@@ -215,13 +225,10 @@ var CheckAnswer= function(who) //CALLED by Next Question To verify whether all t
 
 function SubmitTest(who)
 {
-    GetAnswer("Next")
+    
     if(who == "No")
     {
-        console.log(QNo)
         NotAnswered="";
-        QNo--;
-        console.log(QNo)
     }
     if (who == "Yes")
     {
@@ -233,12 +240,11 @@ function SubmitTest(who)
                 if(User.Score[q]==Questions[q].CorrectOpt)
                 {
                     User.Score[Total]++;
-                    console.log("Mark MCQ "+User.Score[Total]);
                 }    
             }
             else
             {
-                let MCAMark = (1/Questions[q].CorrectOpt.length);
+                let MCAMark = (1/Questions[q].CorrectOpt.length); // calculating mark per option based on the no. of correct option
                 for(let i=0;i<Questions[q].CorrectOpt.length;i++)
                 {    
                     if (User.Score[q].indexOf(Questions[q].CorrectOpt[i])!=-1)
