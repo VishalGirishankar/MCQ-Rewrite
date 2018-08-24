@@ -87,12 +87,12 @@ var NextQuestion = function(who) // Next, Back button onclick event
         {
             CheckAnswer(who);
         }
-        else if (QNo<(Questions.length))
+        else if (QNo<(Questions.length)) // Question Display here
         {
         console.log("At Next Question else if "+QNo)
 
             $('#McqHeader').html(Questions[QNo].Topic);
-            $('#McqContent').html(Questions[QNo].Question);
+            $('#McqContent').html(QNo+". "+Questions[QNo].Question);
             
             for (let q=0;q<5;q++) // to hide all the Rows 
             {   
@@ -100,7 +100,7 @@ var NextQuestion = function(who) // Next, Back button onclick event
             }
             let length = Questions[QNo].NumOption
             
-            for ( let q=0;q<length;q++) // To the Required Rows
+            for ( let q=1;q<=length;q++) // To the Required Rows
             {   
                 
                 $("#Row"+q).show();

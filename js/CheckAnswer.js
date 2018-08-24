@@ -6,13 +6,13 @@ console.log(User);
 
 var OptionToNum = function(Opt) // to use convert Alpha options to numeric options 
 {
-    if(Opt=='A') return 0;
-    else if (Opt=='B') return 1;
-    else if(Opt=='C') return 2;
+    if(Opt=='A') return 1;
+    else if (Opt=='B') return 2;
+    else if(Opt=='C') return 3;
     else if(Opt=='D')
-    return 3;
-    else if(Opt=='E')
     return 4;
+    else if(Opt=='E')
+    return 5;
 }
 
 var CheckAnswerShow =function() // Onclick event of button #CheckAnswer
@@ -37,7 +37,7 @@ var CheckAnswerShow =function() // Onclick event of button #CheckAnswer
 
     for(let i=1; i<Questions.length; i++)
     {
-        $('#ShowQuestion'+i).html(Questions[i].Question +"<br> <br>");
+        $('#ShowQuestion'+i).html(i+". "+Questions[i].Question +"<br> <br>");
         if(Questions[i].AnswerType=="MCQ")
         {
             if(Questions[i].CorrectOpt==User.Score[i])

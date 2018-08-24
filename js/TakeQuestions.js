@@ -106,7 +106,7 @@ var QuestionSubmit= function()
         var blob = new Blob([myJsonString], {
             type: "application/json;charset=charset=utf-8"
         });
-        saveAs(blob, "Question.json");
+        saveAs(blob, "questions.json");
 
         document.getElementById("QuestionForm").innerHTML="";
     }
@@ -128,7 +128,7 @@ function OptionDisplay()
         let Row = $('<tr id="OptionRow'+i+'"></tr>');
         let col1 =$('<td>'+i+'</td>');
         let col2 =$('<td><textarea rows="1" class="form-control" id="OptionText'+i+'" required></textarea></td>')
-        let OptNUm = NumToOpt(q);
+        let OptNUm = NumToOpt(i);
         let col3 =$('<td><input type="radio" name="AnswerInput" value="'+OptNUm+'"></td>');
         let col4 =$('<td><label id="Mark'+q+'></td>')
         $(Row).append(col1);
