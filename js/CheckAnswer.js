@@ -43,10 +43,16 @@ var CheckAnswerShow =function() // Onclick event of button #CheckAnswer
             if(Questions[i].CorrectOpt==User.Score[i])
             {   
                 let OptNum= OptionToNum(Questions[i].CorrectOpt);
-                console.log(OptNum);
                 $( "#ShowQuestion"+i).after( "<div>Your Answer : </div>" );
                 $('#CorrectShowAnswer'+i).html("&emsp;&emsp;"+Questions[i].Options[OptNum]+ " ----> "+"Correct <br> <br>");
                 $('#CorrectShowAnswer'+i).css("color","green");
+            }
+            else if(User.Score[i]=="NotAnswer")
+            {
+                $( "#ShowQuestion"+i).after( "<div style='color:red'>You Haven't Answered the Question  : </div> <br>" );
+                let CON = OptionToNum(Questions[i].CorrectOpt);
+                $( "#WrongShowAnswer"+i).after( "<div>Correct Answer : </div>" );
+                $('#CorrectShowAnswer'+i).html("&emsp;&emsp;"+Questions[i].Options[CON]+ "----> Is the Right Answer <br> <br>");
             }
             else
             {
@@ -68,11 +74,28 @@ var CheckAnswerShow =function() // Onclick event of button #CheckAnswer
                  $('#CorrectShowAnswer'+i).html("&emsp;&emsp; ----> Is the Right Answer <br> <br>");
                  $('#CorrectShowAnswer'+i).css("color","green");
             }
+            else if(User.Score[i]=="NotAnswer")
+            {
+                $( "#ShowQuestion"+i).after( "<div style='color:red'>You Haven't Answered the Question  : </div>  <br> " );
+                $( "#WrongShowAnswer"+i).html( "<div>Correct Options Are : </div>" );
+                for(let q=0;q<Questions[i].CorrectOpt.length;q++)
+                {
+                    let CON = OptionToNum(Questions[i].CorrectOpt[q])
+                    $('#CorrectShowAnswer'+i).append("&emsp;&emsp;"+q+". "+Questions[i].Options[CON]+ " <br> <br>");
+                }
+            }
             else
             {
                 $( "#ShowQuestion"+i).after( "<div>Your Answer : </div>" );
-                $('#WrongShowAnswer'+i).html("&emsp;&emsp;  ----> "+"Worng");
+                $('#WrongShowAnswer'+i).html("&emsp;&emsp;  ----> "+"Worng <br>");
                 $('#WrongShowAnswer'+i).css("color","red");
+                $( "#WrongShowAnswer"+i).after( "<div>Correct Options are : </div>  " );
+                for(let q=0;q<Questions[i].CorrectOpt.length;q++)
+                {
+                    let CON = OptionToNum(Questions[i].CorrectOpt[q])
+                    $('#CorrectShowAnswer'+i).append("&emsp;&emsp;"+q+". "+Questions[i].Options[CON]+ " <br> <br>");
+                }
+
             }
         }
     }

@@ -173,7 +173,11 @@ var GetAnswer= function(who)
         }
     }
 
-    document.getElementById("NotAnswerMark").checked=false;
+    if( document.getElementById("NotAnswerMark").checked)
+    {
+        $('#AnswerBox'+QNo).append('<span>&#9733;</span>');
+        document.getElementById("NotAnswerMark").checked=false;
+    }
         
         if (who=="Next")
         {
