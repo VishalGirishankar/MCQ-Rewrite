@@ -20,12 +20,16 @@ function ValdtAnsType ()
    console.log("Length of check box"+Length)
    if(Length==0)
    {
-       alert("Select the correct option")
-       return false
+        $('#basicExampleModal').modal('toggle');
+        $('#ModalLabel').html('Data Error');
+        $('#ModalMessage').html("Select any correct option in the Options Tab");
+        return false
    }
    else if(Length<ULength || Length>ULength)
    {
-        alert("Tick options equal to Num of correct options");
+        $('#basicExampleModal').modal('toggle');
+        $('#ModalLabel').html('Data Error');
+        $('#ModalMessage').html("Tick options should be equal to Num of correct options as you mentioned");
         return false
    } 
    else
@@ -65,7 +69,7 @@ var GetQuestion = function() //Called By Next Question Button And Submit Functio
     console.log(QuestionsSet);
     RemoveData() ;
    QuestionNo++;
-    console.log("Question No: "+QuestionNo);
+   
     
     }
     return false;
@@ -190,13 +194,17 @@ $("#NumCorrect").focusout(function(){
     {
         if(q>1)
         {
-            alert("For MCQ Num of correct options is 1");
+            $('#basicExampleModal').modal('toggle');
+            $('#ModalLabel').html('Data Error');
+            $('#ModalMessage').html("For MCQ Num of correct options is 1");
             $(this).val(1);
         }
     }
     else if(q>=q2)
     {
-        alert("No. of Correct Options can't be greater or equal to No. of Options")
+        $('#basicExampleModal').modal('toggle');
+        $('#ModalLabel').html('Data Error');
+        $('#ModalMessage').html("No. of Correct Options can't be greater or equal to No. of Options");
         $(this).val("");
 
     }
@@ -214,7 +222,15 @@ $(document).ready(function(){
         
         if (Allow==true)
         {
-            OptionDisplay();
+            let temp = document.querySelector('input[name="AnswerType"]:checked').value;
+            if(temp=="MCQ")
+            {
+                $("input[name*=AnswerInput]").attr("type","radio");
+            }
+            else
+            {
+                $("input[name*=AnswerInput]").attr("type","checkbox");
+            }
         }
 
 });
