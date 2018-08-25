@@ -40,40 +40,37 @@ var GetQuestion = function() //Called By Next Question Button And Submit Functio
 {
     if(ValdtAnsType())
     {
-    QuestionsSet[QuestionNo]={};
-    QuestionsSet[QuestionNo].Topic=document.getElementById("QTopic").value;
-    QuestionsSet[QuestionNo].Difficulty=document.querySelector('input[name="QDifficultyLevel"]:checked').value;
-    QuestionsSet[QuestionNo].Question=document.getElementById("QText").value;
-    QuestionsSet[QuestionNo].AnswerType=document.querySelector('input[name="AnswerType"]:checked').value;
-    QuestionsSet[QuestionNo].NumOption=document.getElementById("NumOption").value;
-    QuestionsSet[QuestionNo].NumCorrect=document.getElementById("NumCorrect").value;
-    QuestionsSet[QuestionNo].Options={};
-    for(let i=1;i<=QuestionsSet[QuestionNo].NumOption;i++)
-    {   
-        QuestionsSet[QuestionNo].Options[i]=document.getElementById("OptionText"+[i]).value;
-    }
+        QuestionsSet[QuestionNo]={};
+        QuestionsSet[QuestionNo].Topic=document.getElementById("QTopic").value;
+        QuestionsSet[QuestionNo].Difficulty=document.querySelector('input[name="QDifficultyLevel"]:checked').value;
+        QuestionsSet[QuestionNo].Question=document.getElementById("QText").value;
+        QuestionsSet[QuestionNo].AnswerType=document.querySelector('input[name="AnswerType"]:checked').value;
+        QuestionsSet[QuestionNo].NumOption=document.getElementById("NumOption").value;
+        QuestionsSet[QuestionNo].NumCorrect=document.getElementById("NumCorrect").value;
+        QuestionsSet[QuestionNo].Options={};
+        for(let i=1;i<=QuestionsSet[QuestionNo].NumOption;i++)
+        {   
+            QuestionsSet[QuestionNo].Options[i]=document.getElementById("OptionText"+[i]).value;
+        }
 
-    if(QuestionsSet[QuestionNo].AnswerType=="MCA")
-    {
-        QuestionsSet[QuestionNo].CorrectOpt=[];
-        $.each($("input[name*=AnswerInput]:checked"), function(){
-            QuestionsSet[QuestionNo].CorrectOpt.push($(this).val())
-        });
-     }
-     else
-     {
-        QuestionsSet[QuestionNo].CorrectOpt=document.querySelector('input[name*=AnswerInput]:checked').value;
-     }
-    
-     
-    console.log(QuestionsSet);
-    RemoveData() ;
-   QuestionNo++;
-   
-    
+        if(QuestionsSet[QuestionNo].AnswerType=="MCA")
+        {
+            QuestionsSet[QuestionNo].CorrectOpt=[];
+            $.each($("input[name*=AnswerInput]:checked"), function(){
+                QuestionsSet[QuestionNo].CorrectOpt.push($(this).val())
+            });
+        }
+        else
+        {
+            QuestionsSet[QuestionNo].CorrectOpt=document.querySelector('input[name*=AnswerInput]:checked').value;
+        }
+        
+        
+        console.log(QuestionsSet);
+        RemoveData() ;
+        QuestionNo++;
     }
-    return false;
-  
+    return false; // return false to avoid form submission and refresh
 }
 
 function RemoveData()
@@ -106,6 +103,9 @@ var QuestionSubmit= function()
     if(ValdtAnsType())
     {
     GetQuestion();
+
+        
+
     var myJsonString = JSON.stringify(QuestionsSet);
         var blob = new Blob([myJsonString], {
             type: "application/json;charset=charset=utf-8"
@@ -266,3 +266,5 @@ jQuery.validator.setDefaults({
     },
    
   });
+
+  OptionDisplay(); // calls it to create a default option display 
