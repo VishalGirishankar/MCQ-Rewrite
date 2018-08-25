@@ -2,5 +2,13 @@
     {"Topic":"Testing 1","Difficulty":"Easy","Question":"Who is Jefbezos","AnswerType":"MCQ","NumOption":"3","NumCorrect":"1","Options":{"1":"He is a invester","2":"He is a Converter ","3":"He is Business magnet"},"CorrectOpt":"C"},
     {"Topic":"Testing 1","Difficulty":"Easy","Question":"Who is waren baffet","AnswerType":"MCQ","NumOption":"4","NumCorrect":"1","Options":{"1":"He is a Actor","2":"He is a dancer","3":"A Fightter","4":"A Invester"},"CorrectOpt":"D"},
     {"Topic":"Testing 1","Difficulty":"Easy","Question":"2*3*/6*7= ","AnswerType":"MCQ","NumOption":"3","NumCorrect":"1","Options":{"1":"34","2":"67","3":"None of the Above"},"CorrectOpt":"C"},
+    {"Topic":"Testing 1","Difficulty":"Easy","Question":"What is the capital of jamu and kashmir","AnswerType":"MCA","NumOption":"4","NumCorrect":"2","Options":{"1":"Jamu ","2":"Srinagar","3":"chennai","4":"Bengaluru"},"CorrectOpt":["A","B"]},
+    {"Topic":"Testing 1","Difficulty":"Easy","Question":"Who is Jefbezos","AnswerType":"MCQ","NumOption":"3","NumCorrect":"1","Options":{"1":"He is a invester","2":"He is a Converter ","3":"He is Business magnet"},"CorrectOpt":"C"},
+    {"Topic":"Testing 1","Difficulty":"Easy","Question":"Who is waren baffet","AnswerType":"MCQ","NumOption":"4","NumCorrect":"1","Options":{"1":"He is a Actor","2":"He is a dancer","3":"A Fightter","4":"A Invester"},"CorrectOpt":"D"},
+    {"Topic":"Testing 1","Difficulty":"Easy","Question":"2*3*/6*7= ","AnswerType":"MCQ","NumOption":"3","NumCorrect":"1","Options":{"1":"34","2":"67","3":"None of the Above"},"CorrectOpt":"C"},
+    {"Topic":"Testing 1","Difficulty":"Easy","Question":"What is the capital of jamu and kashmir","AnswerType":"MCA","NumOption":"4","NumCorrect":"2","Options":{"1":"Jamu ","2":"Srinagar","3":"chennai","4":"Bengaluru"},"CorrectOpt":["A","B"]},
+    {"Topic":"Testing 1","Difficulty":"Easy","Question":"Who is Jefbezos","AnswerType":"MCQ","NumOption":"3","NumCorrect":"1","Options":{"1":"He is a invester","2":"He is a Converter ","3":"He is Business magnet"},"CorrectOpt":"C"},
+    {"Topic":"Testing 1","Difficulty":"Easy","Question":"Who is waren baffet","AnswerType":"MCQ","NumOption":"4","NumCorrect":"1","Options":{"1":"He is a Actor","2":"He is a dancer","3":"A Fightter","4":"A Invester"},"CorrectOpt":"D"},
+    {"Topic":"Testing 1","Difficulty":"Easy","Question":"2*3*/6*7= ","AnswerType":"MCQ","NumOption":"3","NumCorrect":"1","Options":{"1":"34","2":"67","3":"None of the Above"},"CorrectOpt":"C"},
     {"Topic":"Testing 1","Difficulty":"Easy","Question":"What is the capital of jamu and kashmir","AnswerType":"MCA","NumOption":"4","NumCorrect":"2","Options":{"1":"Jamu ","2":"Srinagar","3":"chennai","4":"Bengaluru"},"CorrectOpt":["A","B"]}
 ]

@@ -322,7 +322,7 @@ function CreateAnswerBox ()
    let length = Questions.length;
    for(let q=1;q<=(length-1);q++)
    {
-       let col = $("<div class='col text-center' id='AnswerBox"+q+"' onclick='NextQuestion("+q+")'>"+q+"</div>")
+       let col = $("<div class='col AnswerTableCol text-center' id='AnswerBox"+q+"' onclick='NextQuestion("+q+")'>"+q+"</div>")
        $(Row).append(col);
    }
 

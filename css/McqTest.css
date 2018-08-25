@@ -15,6 +15,13 @@
     position: inherit;
     width: inherit;
     padding: 20px;
+
+}
+
+.AnswerTableContainer{
+    top: 50%;
+    position: absolute;
+    
 }
 
 .AnswerTableRow
@@ -24,6 +31,11 @@
     border-width: medium;
     background-color: rgba(128, 128, 128, 0.801);
    
+}
+.AnswerTableCol
+{
+    border-style: solid;
+    border-width: thin;
 }
 
 .error {
