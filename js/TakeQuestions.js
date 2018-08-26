@@ -220,7 +220,7 @@ $("#NumCorrect").focusout(function(){
 $(document).ready(function(){
     $('input[name*=AnswerType]').change(function(){
         
-        if (Allow==true)
+        
         {
             let temp = document.querySelector('input[name="AnswerType"]:checked').value;
             if(temp=="MCQ")

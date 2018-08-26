@@ -2,11 +2,13 @@
 {
     position: inherit;
     top: 50px;
-    min-height: 400px
+    min-height: 400px;
+    padding: 13px;
 }
 
-.row .col .jumbotron{
+.row .jumbotron{
     box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 2px 10px 0 rgba(0,0,0,0);
+    -webkit-box-shadow: 0;
 }
 
 #TimerDiv
